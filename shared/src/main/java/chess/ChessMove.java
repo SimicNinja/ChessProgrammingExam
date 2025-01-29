@@ -49,7 +49,7 @@ public class ChessMove
 
 	public boolean checkMove(ChessBoard board)
 	{
-		return !board.occupied(end) || board.containsEnemy(end, board.getPiece(start).getTeamColor());
+		return !end.outOfBounds() && (!board.occupied(end) || board.containsEnemy(end, board.getPiece(start).getTeamColor()));
 	}
 
 	@Override
@@ -67,5 +67,11 @@ public class ChessMove
 	public int hashCode()
 	{
 		return Objects.hash(start, end, promote);
+	}
+
+	@Override
+	public String toString()
+	{
+		return this.end.toString();
 	}
 }

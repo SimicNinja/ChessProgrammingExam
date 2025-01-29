@@ -10,6 +10,15 @@ public class QueenMoveCalculator extends MoveCalculator
 {
 	public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition)
 	{
-		return null;
+		checkDirection(board, myPosition, 0, 1);
+		checkDirection(board, myPosition, 0, -1);
+		checkDirection(board, myPosition, 1, 0);
+		checkDirection(board, myPosition, -1, 0);
+		checkDirection(board, myPosition, 1, 1);
+		checkDirection(board, myPosition, -1, -1);
+		checkDirection(board, myPosition, 1, -1);
+		checkDirection(board, myPosition, -1, 1);
+
+		return legalMoves;
 	}
 }

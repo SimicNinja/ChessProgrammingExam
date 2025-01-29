@@ -11,14 +11,12 @@ import java.util.Collection;
 
 public class RookMoveCalculator extends MoveCalculator
 {
-	private final Collection<ChessMove> legalMoves = new ArrayList<>();
-
 	public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition)
 	{
-		legalMoves.addAll(checkDirection(board, myPosition, 0, 1));
-		legalMoves.addAll(checkDirection(board, myPosition, 0, -1));
-		legalMoves.addAll(checkDirection(board, myPosition, 1, 0));
-		legalMoves.addAll(checkDirection(board, myPosition, -1, 0));
+		checkDirection(board, myPosition, 0, 1);
+		checkDirection(board, myPosition, 0, -1);
+		checkDirection(board, myPosition, 1, 0);
+		checkDirection(board, myPosition, -1, 0);
 
 		return legalMoves;
 	}

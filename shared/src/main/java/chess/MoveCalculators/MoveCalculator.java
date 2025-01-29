@@ -9,22 +9,24 @@ import java.util.Collection;
 
 public abstract class MoveCalculator
 {
+	protected final Collection<ChessMove> legalMoves = new ArrayList<>();
+
 	abstract public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition);
 
-	protected Collection<ChessMove> checkDirection(ChessBoard board, ChessPosition start, int rowOffset, int colOffset)
+	protected void checkDirection(ChessBoard board, ChessPosition start, int rowOffset, int colOffset)
 	{
-		Collection<ChessMove> directionMoves = new ArrayList<>();
-
 		ChessPosition end = start.offset(rowOffset, colOffset);
 		ChessMove testMove = new ChessMove(start, end, null);
 
 		while(testMove.checkMove(board))
 		{
-			directionMoves.add(testMove);
+			legalMoves.add(testMove);
+			if(board.containsEnemy(end, board.getPiece(start).getTeamColor()))
+			{
+				break;
+			}
 			end = end.offset(rowOffset, colOffset);
 			testMove = new ChessMove(start, end, null);
 		}
-
-		return directionMoves;
 	}
 }

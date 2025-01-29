@@ -41,6 +41,11 @@ public class ChessPosition
 		return new ChessPosition(this.row + rowOffset, this.col + colOffset);
 	}
 
+	public boolean outOfBounds()
+	{
+		return row < 1 || row > 8 || col < 1 || col > 8;
+	}
+
 	@Override
 	public boolean equals(Object o)
 	{
@@ -61,9 +66,6 @@ public class ChessPosition
 	@Override
 	public String toString()
 	{
-		return "ChessPosition{" +
-				"row=" + row +
-				", col=" + col +
-				'}';
+		return "{" + row + ", " + col + '}';
 	}
 }
