@@ -101,4 +101,33 @@ public class ChessPiece
 	{
 		return Objects.hash(color, type, calculator);
 	}
+
+	@Override
+	public String toString()
+	{
+		if(color == ChessGame.TeamColor.BLACK)
+		{
+			return switch (type)
+			{
+				case KING -> "k";
+				case QUEEN -> "q";
+				case ROOK -> "r";
+				case BISHOP -> "b";
+				case KNIGHT -> "n";
+				case PAWN -> "p";
+			};
+		}
+		else
+		{
+			return switch (type)
+			{
+				case KING -> "K";
+				case QUEEN -> "Q";
+				case ROOK -> "R";
+				case BISHOP -> "B";
+				case KNIGHT -> "N";
+				case PAWN -> "P";
+			};
+		}
+	}
 }
