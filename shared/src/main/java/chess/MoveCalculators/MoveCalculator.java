@@ -6,6 +6,7 @@ import chess.ChessPosition;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 public abstract class MoveCalculator
 {
@@ -43,5 +44,22 @@ public abstract class MoveCalculator
 			moves++;
 			testMove = checkMove(board, start, rowOffset * moves, colOffset * moves);
 		}
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o == null || getClass() != o.getClass())
+		{
+			return false;
+		}
+		MoveCalculator that = (MoveCalculator) o;
+		return Objects.equals(legalMoves, that.legalMoves);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode(legalMoves);
 	}
 }

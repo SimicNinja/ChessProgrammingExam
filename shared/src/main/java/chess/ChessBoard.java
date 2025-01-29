@@ -1,7 +1,8 @@
 package chess;
 
 import java.util.Arrays;
-import java.util.Objects;
+
+import static java.util.Arrays.deepEquals;
 
 /**
  * A chessboard that can hold and rearrange chess pieces.
@@ -106,12 +107,13 @@ public class ChessBoard
 	@Override
 	public boolean equals(Object o)
 	{
+		boolean flag;
 		if (o == null || getClass() != o.getClass())
 		{
 			return false;
 		}
 		ChessBoard that = (ChessBoard) o;
-		return Objects.deepEquals(board, that.board);
+		return deepEquals(board, that.board);
 	}
 
 	@Override
@@ -123,27 +125,27 @@ public class ChessBoard
 	@Override
 	public String toString()
 	{
-		String output = "";
+		StringBuilder output = new StringBuilder();
 
 		for(int row = 7; row > -1; row--)
 		{
-			output = output + "\n";
+			output.append("\n");
 			for(int col = 0; col < 8; col++)
 			{
 				ChessPiece currentPiece = board[row][col];
 				if(currentPiece == null)
 				{
-					output = output + "| ";
+					output.append("| ");
 				}
 				else
 				{
-					output = output + "|" + currentPiece.toString();
+					output.append("|").append(currentPiece.toString());
 				}
 			}
-			output = output + "|";
+			output.append("|");
 		}
-		output = output + "\n";
+		output.append("\n");
 
-		return output;
+		return output.toString();
 	}
 }
