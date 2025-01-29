@@ -10,6 +10,23 @@ public class KingMoveCalculator extends MoveCalculator
 {
 	public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition)
 	{
-		return null;
+		legalMoves.add(checkMove(board, myPosition, 0, 1));
+		legalMoves.add(checkMove(board, myPosition, 0, -1));
+		legalMoves.add(checkMove(board, myPosition, 1, 0));
+		legalMoves.add(checkMove(board, myPosition, -1, 0));
+		legalMoves.add(checkMove(board, myPosition, 1, 1));
+		legalMoves.add(checkMove(board, myPosition, -1, -1));
+		legalMoves.add(checkMove(board, myPosition, 1, -1));
+		legalMoves.add(checkMove(board, myPosition, -1, 1));
+
+		for(int i = legalMoves.size() - 1; i > -1; i--)
+		{
+			if(legalMoves.get(i) == null)
+			{
+				legalMoves.remove(i);
+			}
+		}
+
+		return legalMoves;
 	}
 }

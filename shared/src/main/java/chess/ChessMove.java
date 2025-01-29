@@ -47,11 +47,6 @@ public class ChessMove
 		return promote;
 	}
 
-	public boolean checkMove(ChessBoard board)
-	{
-		return !end.outOfBounds() && (!board.occupied(end) || board.containsEnemy(end, board.getPiece(start).getTeamColor()));
-	}
-
 	@Override
 	public boolean equals(Object o)
 	{
