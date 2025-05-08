@@ -60,19 +60,19 @@ public abstract class MoveCalculator
 		return false;
 	}
 
-	private boolean checkBounds(int row, int col)
+	protected boolean checkBounds(int row, int col)
 	{
 		return row >= 1 && row <= 8 && col >= 1 && col <= 8;
 	}
 
-	private boolean positionOpen(int row, int col, ChessBoard board)
+	protected boolean positionOpen(int row, int col, ChessBoard board)
 	{
 		ChessPosition position = new ChessPosition(row, col);
 
 		return board.getPiece(position) == null;
 	}
 
-	private boolean positionContainsEnemy(int row, int col, ChessBoard board, ChessGame.TeamColor color)
+	protected boolean positionContainsEnemy(int row, int col, ChessBoard board, ChessGame.TeamColor color)
 	{
 		ChessPosition position = new ChessPosition(row, col);
 		ChessPiece piece = board.getPiece(position);

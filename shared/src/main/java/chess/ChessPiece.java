@@ -33,6 +33,7 @@ public class ChessPiece
 			case BISHOP -> calculator = new BishopMoveCalculator();
 			case KNIGHT -> calculator = new KnightMoveCalculator();
 			case ROOK -> calculator = new RookMoveCalculator();
+			case PAWN -> calculator = new PawnMoveCalculator();
 		}
 	}
 
