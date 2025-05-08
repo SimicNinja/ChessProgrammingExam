@@ -1,9 +1,6 @@
 package chess;
 
-import chess.MoveCalculators.BishopMoveCalculator;
-import chess.MoveCalculators.KingMoveCalculator;
-import chess.MoveCalculators.MoveCalculator;
-import chess.MoveCalculators.QueenMoveCalculator;
+import chess.MoveCalculators.*;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -34,6 +31,7 @@ public class ChessPiece
 			case KING -> calculator = new KingMoveCalculator();
 			case QUEEN -> calculator = new QueenMoveCalculator();
 			case BISHOP -> calculator = new BishopMoveCalculator();
+			case ROOK -> calculator = new RookMoveCalculator();
 		}
 	}
 
