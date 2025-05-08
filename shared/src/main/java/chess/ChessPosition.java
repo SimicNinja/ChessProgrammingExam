@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.Objects;
+
 /**
  * Represents a single square position on a chess board
  * <p>
@@ -8,9 +10,14 @@ package chess;
  */
 public class ChessPosition
 {
+	private int row, col;
 
 	public ChessPosition(int row, int col)
 	{
+		checkBounds(row, "row");
+		checkBounds(col, "column");
+		this.row = row;
+		this.col = col;
 	}
 
 	/**
@@ -19,7 +26,7 @@ public class ChessPosition
 	 */
 	public int getRow()
 	{
-		throw new RuntimeException("Not implemented");
+		return row;
 	}
 
 	/**
@@ -29,5 +36,30 @@ public class ChessPosition
 	public int getColumn()
 	{
 		throw new RuntimeException("Not implemented");
+	}
+
+	private void checkBounds(int index, String type)
+	{
+		if(index < 1 || index > 8)
+		{
+			throw new RuntimeException("Invalid " + type + ": " + index + " you must be between 1-8 (inclusive)");
+		}
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (o == null || getClass() != o.getClass())
+		{
+			return false;
+		}
+		ChessPosition that = (ChessPosition) o;
+		return row == that.row && col == that.col;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(row, col);
 	}
 }
