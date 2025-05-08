@@ -35,7 +35,7 @@ public class ChessPosition
 	 */
 	public int getColumn()
 	{
-		throw new RuntimeException("Not implemented");
+		return col;
 	}
 
 	private void checkBounds(int index, String type)
