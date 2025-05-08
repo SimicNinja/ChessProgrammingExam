@@ -74,6 +74,16 @@ public class PawnMoveCalculator extends MoveCalculator
 	{
 		ChessPosition end = new ChessPosition(row, col);
 
-		moves.add(new ChessMove(start, end, null));
+		if(row == 8 && color == ChessGame.TeamColor.WHITE || row == 1 && color == ChessGame.TeamColor.BLACK)
+		{
+			moves.add(new ChessMove(start, end, ChessPiece.PieceType.QUEEN));
+			moves.add(new ChessMove(start, end, ChessPiece.PieceType.BISHOP));
+			moves.add(new ChessMove(start, end, ChessPiece.PieceType.KNIGHT));
+			moves.add(new ChessMove(start, end, ChessPiece.PieceType.ROOK));
+		}
+		else
+		{
+			moves.add(new ChessMove(start, end, null));
+		}
 	}
 }
