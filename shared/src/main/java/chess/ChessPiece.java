@@ -1,5 +1,8 @@
 package chess;
 
+import chess.MoveCalculators.BishopMoveCalculator;
+import chess.MoveCalculators.MoveCalculator;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -13,11 +16,21 @@ public class ChessPiece
 {
 	ChessGame.TeamColor color;
 	ChessPiece.PieceType type;
+	MoveCalculator calculator;
 
 	public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type)
 	{
 		color = pieceColor;
 		this.type = type;
+		makeCalculator();
+	}
+
+	private void makeCalculator()
+	{
+		switch(type)
+		{
+			case BISHOP -> calculator = new BishopMoveCalculator();
+		}
 	}
 
 	/**
@@ -45,7 +58,7 @@ public class ChessPiece
 	 */
 	public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition)
 	{
-		throw new RuntimeException("Not implemented");
+		return  calculator.pieceMoves(board, myPosition);
 	}
 
 	/**

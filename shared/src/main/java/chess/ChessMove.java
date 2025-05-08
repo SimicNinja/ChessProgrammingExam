@@ -64,4 +64,10 @@ public class ChessMove
 	{
 		return Objects.hash(start, end, promotion);
 	}
+
+	@Override
+	public String toString()
+	{
+		return end.toString();
+	}
 }
