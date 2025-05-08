@@ -35,6 +35,22 @@ public abstract class MoveCalculator
 		}
 	}
 
+	protected void checkMove(int rowOffset, int colOffset, ChessBoard board, ChessPosition start)
+	{
+		ChessPiece piece = board.getPiece(start);
+		ChessGame.TeamColor color = piece.getTeamColor();
+
+		int row = start.getRow() + rowOffset;
+		int col = start.getColumn() + colOffset;
+
+		if(validPieceMove(row, col, board, color))
+		{
+			ChessPosition end = new ChessPosition(row, col);
+
+			moves.add(new ChessMove(start, end, null));
+		}
+	}
+
 	protected boolean validPieceMove(int row, int col, ChessBoard board, ChessGame.TeamColor color)
 	{
 		if(checkBounds(row, col))
