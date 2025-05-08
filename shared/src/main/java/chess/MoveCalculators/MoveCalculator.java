@@ -35,7 +35,7 @@ public abstract class MoveCalculator
 		}
 	}
 
-	private boolean validPieceMove(int row, int col, ChessBoard board, ChessGame.TeamColor color)
+	protected boolean validPieceMove(int row, int col, ChessBoard board, ChessGame.TeamColor color)
 	{
 		if(checkBounds(row, col))
 		{
