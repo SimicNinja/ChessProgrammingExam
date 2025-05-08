@@ -3,6 +3,7 @@ package chess;
 import chess.MoveCalculators.BishopMoveCalculator;
 import chess.MoveCalculators.KingMoveCalculator;
 import chess.MoveCalculators.MoveCalculator;
+import chess.MoveCalculators.QueenMoveCalculator;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -31,6 +32,7 @@ public class ChessPiece
 		switch(type)
 		{
 			case KING -> calculator = new KingMoveCalculator();
+			case QUEEN -> calculator = new QueenMoveCalculator();
 			case BISHOP -> calculator = new BishopMoveCalculator();
 		}
 	}
